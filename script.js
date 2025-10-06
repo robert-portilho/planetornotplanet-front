@@ -37,69 +37,58 @@
   }
   animateStars();
 
-  // Função de mock análise
+
+
   async function analyzeData() {
-    
-  const fileInput = document.getElementById("csvFile");
+  const koi_duration = parseFloat(document.getElementById("koi_duration").value);
+  const koi_ror = parseFloat(document.getElementById("koi_ror").value);
+  const koi_srho = parseFloat(document.getElementById("koi_srho").value);
+  const koi_dicco_msky = parseFloat(document.getElementById("koi_dicco_msky").value);
+  const koi_dikco_msky = parseFloat(document.getElementById("koi_dikco_msky").value);
 
-  const file = fileInput.files[0];
-
-  if (!file) {
-    alert("First of all, select a CSV file.");
+  if (
+    isNaN(koi_duration) ||
+    isNaN(koi_ror) ||
+    isNaN(koi_srho) ||
+    isNaN(koi_dicco_msky) ||
+    isNaN(koi_dikco_msky)
+  ) {
+    alert("Please fill in all parameters before running the analysis.");
     return;
   }
-  
-  const formData = new FormData();
-  formData.append("file", file);
 
-  //resultDiv.innerHTML = "<p>Enviando arquivo...</p>";
+  const payload = {
+    koi_duration,
+    koi_ror,
+    koi_srho,
+    koi_dicco_msky,
+    koi_dikco_msky
+  };
 
-    try {
-        const response = await fetch("https://planetornotplanet.onrender.com/predict", {
-        method: "POST",
-        body: formData
-        });
+  try {
+    const response = await fetch("https://fuzzy-broccoli-96pq9p5p9w6hxvrv-8000.app.github.dev/predict", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload)
+    });
 
-        if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.detail || "Erro ao processar requisição");
-        }
-
-        const data = await response.json();
-        console.log(typeof( data));
-
-        document.getElementById('statName').innerText= data.Name;
-        document.getElementById('statPeriod').innerText= data.Period+' days';
-        document.getElementById('statRadius').innerText= data.Radius + ' R⊕';
-        document.getElementById('statMass').innerText='≈'+ data.Mass + ' M⊕';
-        document.getElementById('statMagnitude').innerText= data.Magnitude;
-        document.getElementById('statClass').innerText= data.Classification;
-        /*resultDiv.innerHTML = `
-        <h3>Resultado:</h3>
-        <pre>${JSON.stringify(data, null, 2)}</pre>
-        `;*/
-    } catch (err) {
-        //resultDiv.innerHTML = `<p style="color:red;">${err.message}</p>`;
-        alert("Error: "+err.message);
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.detail || "Erro ao processar requisição");
     }
-    /*const time = Array.from({length:100},(_,i)=>i);
-    const flux = time.map(t=>1+0.05*Math.sin(2*Math.PI*t/20));
-    const model = time.map(t=>1+0.05*Math.sin(2*Math.PI*t/20+0.1));
 
-    Plotly.newPlot('lightCurveGraph',[
-      {x:time,y:flux,mode:'lines+markers',name:'Observed',line:{color:'cyan'}},
-      {x:time,y:model,mode:'lines',name:'Model',line:{color:'red',width:3}}
-    ],{
-      plot_bgcolor:'#0f1f3d',
-      paper_bgcolor:'#0f1f3d',
-      font:{color:'#fff'},
-      title:'Light Curve with AI Model',
-      xaxis:{title:'Time'},
-      yaxis:{title:'Flux'}
-    });*/
+    const data = await response.json();
+    console.log("Resposta do modelo:", data);
 
+    document.getElementById("statClass").innerText = `Probabilidade: ${(data[0] * 100).toFixed(2)}%`;
+    document.getElementById("result").style.display = "block";
 
+  } catch (err) {
+    alert("Erro: " + err.message);
   }
+}
 
 
 const track = document.querySelector('.carousel-track');
