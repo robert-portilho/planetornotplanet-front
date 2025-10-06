@@ -24,29 +24,41 @@
 <header>Planet or not Planet</header>
 
 <div class="container">
-  <!-- Input Section -->
+<!-- Input Section -->
 <div class="card" id="inputSection">
   <h2>Enter Observation Parameters</h2>
 
   <div class="input-grid">
-    <label for="koi_duration">koi_duration</label>
-    <input id="koi_duration" type="number" step="any" placeholder="Transit duration">
+    <div class="input-wrapper">
+      <label for="koi_duration">koi_duration</label>
+      <input id="koi_duration" type="number" step="any" placeholder="Transit duration">
+    </div>
 
-    <label for="koi_ror">koi_ror</label>
-    <input id="koi_ror" type="number" step="any" placeholder="Radius ratio (planet/star)">
+    <div class="input-wrapper">
+      <label for="koi_ror">koi_ror</label>
+      <input id="koi_ror" type="number" step="any" placeholder="Radius ratio (planet/star)">
+    </div>
 
-    <label for="koi_srho">koi_srho</label>
-    <input id="koi_srho" type="number" step="any" placeholder="Stellar density">
+    <div class="input-wrapper">
+      <label for="koi_srho">koi_srho</label>
+      <input id="koi_srho" type="number" step="any" placeholder="Stellar density">
+    </div>
 
-    <label for="koi_dicco_msky">koi_dicco_msky</label>
-    <input id="koi_dicco_msky" type="number" step="any" placeholder="Displacement correlation (sky)">
+    <div class="input-wrapper">
+      <label for="koi_dicco_msky">koi_dicco_msky</label>
+      <input id="koi_dicco_msky" type="number" step="any" placeholder="Displacement correlation (sky)">
+    </div>
 
-    <label for="koi_dikco_msky">koi_dikco_msky</label>
-    <input id="koi_dikco_msky" type="number" step="any" placeholder="Intrinsic motion correlation">
+    <div class="input-wrapper">
+      <label for="koi_dikco_msky">koi_dikco_msky</label>
+      <input id="koi_dikco_msky" type="number" step="any" placeholder="Intrinsic motion correlation">
+    </div>
   </div>
 
-  <button onclick="analyzeData()">Run Analysis</button>
+  <button onclick="analyzeData()" class="glass-btn">Run Analysis</button>
 </div>
+
+
 
 <div class="stat-card" id="result" style="display: none;"></div>
 

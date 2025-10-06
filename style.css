@@ -220,3 +220,68 @@ html {
   scrollbar-width: thin;
   scrollbar-color: linear-gradient(#8a2be2, #4b0082) rgba(15,31,61,0.5);
 }
+
+
+/* Grid dos inputs */
+.input-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* Wrapper para cada input */
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Labels */
+.input-wrapper label {
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: #fff;
+}
+
+/* Inputs estilo liquid glass */
+.input-wrapper input {
+  padding: 10px 15px;
+  border-radius: 15px;
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.input-wrapper input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.input-wrapper input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Botão liquid glass */
+.glass-btn {
+  margin-top: 20px;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+.glass-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+}
