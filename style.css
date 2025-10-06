@@ -1,0 +1,222 @@
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      background: radial-gradient(circle at center, #0f1f3d, #000 80%);
+      overflow-x: hidden;
+      padding-top: 80px; /* Espaço para navbar fixa */
+    }
+
+    /* Fundo de partículas / galáxia */
+    canvas#bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+    }
+
+    header {
+      text-align: center;
+      padding: 60px 20px 40px;
+      font-size: 2.5em;
+      font-weight: 700;
+      text-shadow: 0 0 10px #8a2be2, 0 0 20px #4b0082;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    /* Liquid glass card */
+    .card {
+      background: rgba(255,255,255,0.05);
+      border-radius: 20px;
+      padding: 30px;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 8px 32px 0 rgba(0,0,0,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 48px 0 rgba(138,43,226,0.4);
+    }
+
+    /* Inputs */
+    input[type="file"], input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 16px;
+      border-radius: 12px;
+      border: none;
+      font-size: 1em;
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      backdrop-filter: blur(10px);
+    }
+    input::placeholder { color: #ddd; }
+
+    /* Botão neon */
+    button {
+      padding: 12px 28px;
+      border: none;
+      border-radius: 12px;
+      font-size: 1em;
+      font-weight: 600;
+      cursor: pointer;
+      background: linear-gradient(90deg, #8a2be2, #4b0082);
+      color: #fff;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px #8a2be2, 0 0 20px #4b0082;
+    }
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #8a2be2, 0 0 40px #4b0082;
+    }
+
+    /* Stats grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 16px;
+    }
+    .stat-card {
+      background: rgba(255,255,255,0.05);
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 6px 30px 0 rgba(0,0,0,0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .stat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 48px 0 rgba(138,43,226,0.3);
+    }
+    .stat-card h3 { margin-bottom: 10px; color: #ffcc00; font-size: 1em; }
+    .stat-card p { font-size: 1.2em; font-weight: 600; }
+
+    /* Plotly graph */
+    #lightCurveGraph {
+      width: 100%;
+      height: 450px;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+  .carousel-container {
+  position: relative;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 20px;
+  /* Transição removida, vamos animar via JS */
+}
+
+.carousel-item {
+  min-width: 250px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(15px);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 6px 30px rgba(0,0,0,0.2);
+  flex-shrink: 0;
+  text-align: left;
+}
+
+.carousel-item h3 {
+  margin-bottom: 8px;
+  color: #ffcc00;
+}
+
+.carousel-item p {
+  font-size: 0.9em;
+  margin-bottom: 4px;
+}
+
+/* Botões ocultos ou você pode manter */
+.carousel-btn { display: none; }
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  z-index: 100;
+  padding: 12px 0;
+}
+
+.navbar ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  gap: 40px;
+}
+
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.navbar a:hover {
+  color: #ffcc00;
+  text-shadow: 0 0 8px #ffcc00;
+}
+
+/* Scroll suave */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Adicionar padding-top para compensar navbar fixa */
+.container > .card {
+  scroll-margin-top: 80px;
+}
+
+/* Scrollbar para navegadores WebKit (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 12px;               /* largura da barra */
+  height: 12px;              /* altura horizontal, se houver */
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 31, 61, 0.5);  /* fundo da track */
+  border-radius: 10px;
+  box-shadow: inset 0 0 5px rgba(138,43,226,0.2);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #8a2be2, #4b0082);
+  border-radius: 10px;
+  border: 3px solid rgba(15, 31, 61, 0.5);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #ffcc00, #8a2be2);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: linear-gradient(#8a2be2, #4b0082) rgba(15,31,61,0.5);
+}

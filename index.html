@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A World Away – Hunting Exoplanets with AI</title>
+  <link rel="stylesheet" href="style.css">
+  <!--<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>-->
+</head>
+<body>
+
+<canvas id="bg"></canvas>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <ul>
+    <li><a href="#uploadSection">Upload</a></li>
+    <!--<li><a href="#graphSection">Light Curve</a></li>-->
+    <li><a href="#statsSection">Statistics</a></li>
+    <li><a href="#carouselSection">Explore Planets</a></li>
+  </ul>
+</nav>
+
+<header>Planet or not Planet</header>
+
+<div class="container">
+  <!-- Upload Section -->
+  <div class="card" id="uploadSection">
+    <h2>Upload your CSV file</h2>
+    <input type="file" id="csvFile" accept=".csv">
+    <!--<input type="text" id="fileUrl" placeholder="Enter file URL">-->
+    <button onclick="analyzeData()">Run Analysis</button>
+  </div>
+  <div  class="stat-card" id="result" style="display: none;"></div>
+
+  <!-- Graph Section -->
+  <!--<div class="card" id="graphSection">
+    <div id="lightCurveGraph"></div>
+  </div>-->
+
+  <!-- Stats Section -->
+  <div class="card stats-grid" id="statsSection">
+    <div class="stat-card"><h3>Name</h3><p id="statName">-</p></div>
+    <div class="stat-card"><h3>Period</h3><p id="statPeriod">-</p></div>
+    <div class="stat-card"><h3>Radius</h3><p id="statRadius">-</p></div>
+    <div class="stat-card"><h3>Mass</h3><p id="statMass">-</p></div>
+    <div class="stat-card"><h3>Magnitude</h3><p id="statMagnitude">-</p></div>
+    <div class="stat-card"><h3>Classification</h3><p id="statClass">-</p></div>
+  </div>
+
+  <!-- Carousel Section -->
+  <div class="card" id="carouselSection">
+    <h2>Explore Other Exoplanets</h2>
+    <div class="carousel-container">
+      <button class="carousel-btn left" onclick="moveCarousel(-1)">&#10094;</button>
+      <div class="carousel-track">
+        <div class="carousel-item">
+          <h3>Kepler-22b</h3>
+          <p>Period: 289.9 days</p>
+          <p>Radius: 2.38 R⊕</p>
+          <p>Classification: CONFIRMED</p>
+          <p>Curiosity: First Kepler planet in habitable zone.</p>
+        </div>
+        <div class="carousel-item">
+          <h3>Proxima Centauri b</h3>
+          <p>Period: 11.2 days</p>
+          <p>Radius: 1.08 R⊕</p>
+          <p>Classification: CANDIDATE</p>
+          <p>Curiosity: Closest exoplanet to Earth (~4.24 ly).</p>
+        </div>
+        <div class="carousel-item">
+          <h3>TRAPPIST-1e</h3>
+          <p>Period: 6.1 days</p>
+          <p>Radius: 0.91 R⊕</p>
+          <p>Classification: CONFIRMED</p>
+          <p>Curiosity: One of seven Earth-sized planets in TRAPPIST-1 system.</p>
+        </div>
+        <div class="carousel-item">
+          <h3>HD 209458 b</h3>
+          <p>Period: 3.5 days</p>
+          <p>Radius: 1.38 R⊕</p>
+          <p>Classification: CONFIRMED</p>
+          <p>Curiosity: First exoplanet observed to transit its star.</p>
+        </div>
+      </div>
+      <button class="carousel-btn right" onclick="moveCarousel(1)">&#10095;</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
